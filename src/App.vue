@@ -13,7 +13,7 @@
       </div>
     </div>
     <keep-alive>
-      <router-view></router-view>
+      <router-view :seller="seller"></router-view>
     </keep-alive>
     <!-- <div id="nav"> -->
 
@@ -25,12 +25,18 @@
 </template>
 <script type="text/ecmascript-6">
 import header from 'components/header/header.vue';
+import { urlParse } from 'common/js/util';
 const ERR_OK = 0;
 const debug = process.env.NODE_ENV !== 'production';
 export default {
   data () {
     return {
-      seller: {}
+      seller: {
+        id: (() => {
+          let queryParam = urlParse();
+          return queryParam.id;
+        })()
+      }
     }
   },
   created() {
@@ -39,6 +45,7 @@ export default {
       response = response.body;
       if (response.errno === ERR_OK) {
         this.seller = Object.assign({}, this.seller, response.data);
+        console.log(this.seller)
       }
     });
   },

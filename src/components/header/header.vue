@@ -61,7 +61,6 @@
             <div class="title">
               <div class="line"></div>
               <div class="text">商家公告</div>
-              <input type="button" value="xxx" @click="alt(1)"/>
               <div class="line"></div>
             </div>
             <div class="bulletin">
@@ -94,9 +93,6 @@ export default {
   methods: {
     showDetail() {
       this.detailShow = true;
-    },
-    alt(a) {
-     alert(a)
     },
     hideDetail() {
       this.detailShow = false;

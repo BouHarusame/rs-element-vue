@@ -1,17 +1,31 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+import goods from "./components/goods/goods";
+import ratings from "./components/ratings/ratings";
+import seller from "./components/seller/seller";
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
+  linkActiveClass: "active",
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home
+      redirect: "/goods"
+    },
+    {
+      path: "/goods",
+      component: goods
+    },
+    {
+      path: "/ratings",
+      component: ratings
+    },
+    {
+      path: "/seller",
+      component: seller
     },
     {
       path: "/about",
@@ -24,3 +38,8 @@ export default new Router({
     }
   ]
 });
+
+// export default new Router({
+//   linkActiveClass: "active",
+//   routes
+// })
